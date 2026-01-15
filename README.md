@@ -5,7 +5,8 @@ The task is split into multiple blocks (practice, localizers, main task blocks),
 
 ## Requirements
 
-This task was created using PsychoPy 2025.1.1. I'm not sur eif it works with other psychopy versions.
+This task was created using PsychoPy 2025.1.1. 
+I'm not sure if it works with other psychopy versions.
 
 ## Running the Task
 
