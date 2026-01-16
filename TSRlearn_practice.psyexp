@@ -7,7 +7,7 @@
     <Param val="u'data/%s_%s_%s' % (expInfo['participant'], expName, expInfo['date'])" valType="code" updates="None" name="Data filename"/>
     <Param val="True" valType="bool" updates="None" name="Enable Escape"/>
     <Param val="Thank you for your patience." valType="str" updates="None" name="End Message"/>
-    <Param val="{'participant': 'f&quot;{randint(0, 999999):06.0f}&quot;', 'session': '001'}" valType="code" updates="None" name="Experiment info"/>
+    <Param val="{'participant': 'f&quot;{randint(0, 999999):06.0f}&quot;'}" valType="code" updates="None" name="Experiment info"/>
     <Param val="True" valType="bool" updates="None" name="Force stereo"/>
     <Param val="True" valType="bool" updates="None" name="Full-screen window"/>
     <Param val="" valType="str" updates="None" name="HTML path"/>
@@ -20,7 +20,7 @@
     <Param val="True" valType="bool" updates="None" name="Save log file"/>
     <Param val="True" valType="bool" updates="None" name="Save psydat file"/>
     <Param val="True" valType="bool" updates="None" name="Save wide csv file"/>
-    <Param val="2" valType="num" updates="None" name="Screen"/>
+    <Param val="1" valType="num" updates="None" name="Screen"/>
     <Param val="True" valType="bool" updates="None" name="Show info dlg"/>
     <Param val="False" valType="bool" updates="None" name="Show mouse"/>
     <Param val="height" valType="str" updates="None" name="Units"/>
@@ -1960,7 +1960,7 @@
         <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
         <Param val="0.03" valType="num" updates="constant" name="letterHeight"/>
         <Param val="tooSlowtext_2" valType="code" updates="None" name="name"/>
-        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="1" valType="num" updates="constant" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
         <Param val="(0, 0)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
@@ -1980,8 +1980,8 @@
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="if ((language === &quot;english&quot;)) {&amp;#10;    tooSlowtext.text_2 = &quot;Too slow. You need to respond faster.&quot;;&amp;#10;}&amp;#10;if ((language === &quot;german&quot;)) {&amp;#10;    tooSlowtext_2.text = &quot;Zu langsam. Sie m\u00fcssen schneller antworten.&quot;;&amp;#10;}&amp;#10;if ((language === &quot;french&quot;)) {&amp;#10;    tooSlowtext_2.text = &quot;Trop lent. Vous devez r\u00e9pondre plus rapidement. &quot;;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="if language == &quot;english&quot;:&amp;#10;    tooSlowtext.text_2 = (&amp;#10;        &quot;Too slow. You need to respond faster.&quot;&amp;#10;    )&amp;#10;&amp;#10;if language == &quot;german&quot;:&amp;#10;    tooSlowtext_2.text = (&amp;#10;        &quot;Zu langsam. Sie müssen schneller antworten.&quot;&amp;#10;    )&amp;#10;&amp;#10;if language == &quot;french&quot;:&amp;#10;    tooSlowtext_2.text = (&amp;#10;        &quot;Trop lent. Vous devez répondre plus rapidement. &quot;&amp;#10;    )&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="if ((language === &quot;english&quot;)) {&amp;#10;    tooSlowtext_2.text = &quot;Too slow. You need to respond faster.&quot;;&amp;#10;}&amp;#10;if ((language === &quot;german&quot;)) {&amp;#10;    tooSlowtext_2.text = &quot;Zu langsam. Sie m\u00fcssen schneller antworten.&quot;;&amp;#10;}&amp;#10;if ((language === &quot;french&quot;)) {&amp;#10;    tooSlowtext_2.text = &quot;Trop lent. Vous devez r\u00e9pondre plus rapidement. &quot;;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="if language == &quot;english&quot;:&amp;#10;    tooSlowtext_2.text = (&amp;#10;        &quot;Too slow. You need to respond faster.&quot;&amp;#10;    )&amp;#10;&amp;#10;if language == &quot;german&quot;:&amp;#10;    tooSlowtext_2.text = (&amp;#10;        &quot;Zu langsam. Sie müssen schneller antworten.&quot;&amp;#10;    )&amp;#10;&amp;#10;if language == &quot;french&quot;:&amp;#10;    tooSlowtext_2.text = (&amp;#10;        &quot;Trop lent. Vous devez répondre plus rapidement. &quot;&amp;#10;    )&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
