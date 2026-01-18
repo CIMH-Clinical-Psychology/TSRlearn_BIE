@@ -1890,13 +1890,13 @@
       <CodeComponent name="set_trigger_image" plugin="None">
         <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
-        <Param val="trigClock = core.Clock()&amp;#10;trigOn = False&amp;#10;" valType="extendedCode" updates="constant" name="Begin Experiment"/>
-        <Param val="trigClock = new util.Clock();&amp;#10;trigOn = false;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="trigClock = core.Clock()&amp;#10;&amp;#10;&amp;#10;" valType="extendedCode" updates="constant" name="Begin Experiment"/>
+        <Param val="trigClock = new util.Clock();&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
+        <Param val="trigOn = false;&amp;#10;trigPending = false;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="trigOn = False&amp;#10;trigPending = False" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
-        <Param val="&amp;#10;if correct.status == NOT_STARTED and not trigOn and tThisFlip &gt;= 0.0 - frameTolerance:&amp;#10;    win.callOnFlip(setParallelData, correctTrigNumber)&amp;#10;    win.callOnFlip(trigClock.reset)&amp;#10;    trigOn = True&amp;#10;    &amp;#10;if prompt.status == NOT_STARTED and not trigOn and tThisFlip &gt;= 0.0 - frameTolerance:&amp;#10;    win.callOnFlip(setParallelData, promptTrigNumber)&amp;#10;    win.callOnFlip(trigClock.reset)&amp;#10;    trigOn = True&amp;#10;&amp;#10;if dist_01.status == NOT_STARTED and not trigOn and tThisFlip &gt;= 0.0 - frameTolerance:&amp;#10;    win.callOnFlip(setParallelData, dist01TrigNumber)&amp;#10;    win.callOnFlip(trigClock.reset)&amp;#10;    trigOn = True&amp;#10;&amp;#10;if dist_02.status == NOT_STARTED and not trigOn and tThisFlip &gt;= 0.0 - frameTolerance:&amp;#10;    win.callOnFlip(setParallelData, dist02TrigNumber)&amp;#10;    win.callOnFlip(trigClock.reset)&amp;#10;    trigOn = True&amp;#10;&amp;#10;if trigOn and trigClock.getTime() &gt;= 0.01:  # 10 ms pulse&amp;#10;    setParallelData(0)         &amp;#10;    trigOn = False" valType="extendedCode" updates="constant" name="Each Frame"/>
-        <Param val="if ((((correct.status === NOT_STARTED) &amp;&amp; (! trigOn)) &amp;&amp; (tThisFlip &gt;= (0.0 - frameTolerance)))) {&amp;#10;    psychoJS.window.callOnFlip(setParallelData, correctTrigNumber);&amp;#10;    psychoJS.window.callOnFlip(trigClock.reset);&amp;#10;    trigOn = true;&amp;#10;}&amp;#10;if ((((prompt.status === NOT_STARTED) &amp;&amp; (! trigOn)) &amp;&amp; (tThisFlip &gt;= (0.0 - frameTolerance)))) {&amp;#10;    psychoJS.window.callOnFlip(setParallelData, promptTrigNumber);&amp;#10;    psychoJS.window.callOnFlip(trigClock.reset);&amp;#10;    trigOn = true;&amp;#10;}&amp;#10;if ((((dist_01.status === NOT_STARTED) &amp;&amp; (! trigOn)) &amp;&amp; (tThisFlip &gt;= (0.0 - frameTolerance)))) {&amp;#10;    psychoJS.window.callOnFlip(setParallelData, dist01TrigNumber);&amp;#10;    psychoJS.window.callOnFlip(trigClock.reset);&amp;#10;    trigOn = true;&amp;#10;}&amp;#10;if ((((dist_02.status === NOT_STARTED) &amp;&amp; (! trigOn)) &amp;&amp; (tThisFlip &gt;= (0.0 - frameTolerance)))) {&amp;#10;    psychoJS.window.callOnFlip(setParallelData, dist02TrigNumber);&amp;#10;    psychoJS.window.callOnFlip(trigClock.reset);&amp;#10;    trigOn = true;&amp;#10;}&amp;#10;if ((trigOn &amp;&amp; (trigClock.getTime() &gt;= 0.01))) {&amp;#10;    setParallelData(0);&amp;#10;    trigOn = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="&amp;#10;&amp;#10;# schedule ON + clock reset on the flip&amp;#10;if correct.status == NOT_STARTED and (not trigOn) and (not trigPending) and tThisFlip &gt;= 0.0 - frameTolerance:&amp;#10;    win.callOnFlip(setParallelData, correctTrigNumber)&amp;#10;    win.callOnFlip(trigClock.reset)&amp;#10;    trigPending = True&amp;#10;&amp;#10;# # set trigOn to 0 after flip happened (for some reason it doesnt work before)&amp;#10;if trigPending and trigClock.getTime() &lt; 0.001:&amp;#10;    trigOn = True&amp;#10;    trigPending = False&amp;#10;&amp;#10;# schedule OFF after 10 ms &amp;#10;if trigOn and trigClock.getTime() &gt;= 0.01:&amp;#10;    setParallelData(0)&amp;#10;    trigOn = False&amp;#10;&amp;#10;&amp;#10;    &amp;#10;&amp;#10;" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="if (((((correct.status === NOT_STARTED) &amp;&amp; (! trigOn)) &amp;&amp; (! trigPending)) &amp;&amp; (tThisFlip &gt;= (0.0 - frameTolerance)))) {&amp;#10;    psychoJS.window.callOnFlip(setParallelData, correctTrigNumber);&amp;#10;    psychoJS.window.callOnFlip(trigClock.reset);&amp;#10;    trigPending = true;&amp;#10;}&amp;#10;if ((trigPending &amp;&amp; (trigClock.getTime() &lt; 0.001))) {&amp;#10;    trigOn = true;&amp;#10;    trigPending = false;&amp;#10;}&amp;#10;if ((trigOn &amp;&amp; (trigClock.getTime() &gt;= 0.01))) {&amp;#10;    setParallelData(0);&amp;#10;    trigOn = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Routine"/>
@@ -2126,8 +2126,8 @@
         <Param val="response_trigger = trigger_dict[&quot;image_selected&quot;];&amp;#10;resp_trig_giv = false;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
         <Param val="response_trigger = trigger_dict[&quot;image_selected&quot;]&amp;#10;resp_trig_giv = False&amp;#10;&amp;#10;&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
-        <Param val="if key_resp.keys and not trigOn and not resp_trig_giv:&amp;#10;    setParallelData(response_trigger)&amp;#10;    trigClock.reset()&amp;#10;    trigOn = True&amp;#10;    resp_trig_giv=True&amp;#10;&amp;#10;if trigOn and trigClock.getTime() &gt;= 0.01:  # 10 ms pulse&amp;#10;    setParallelData(0)         &amp;#10;    trigOn = False&amp;#10;" valType="extendedCode" updates="constant" name="Each Frame"/>
-        <Param val="if (((key_resp.keys &amp;&amp; (! trigOn)) &amp;&amp; (! resp_trig_giv))) {&amp;#10;    setParallelData(response_trigger);&amp;#10;    trigClock.reset();&amp;#10;    trigOn = true;&amp;#10;    resp_trig_giv = true;&amp;#10;}&amp;#10;if ((trigOn &amp;&amp; (trigClock.getTime() &gt;= 0.01))) {&amp;#10;    setParallelData(0);&amp;#10;    trigOn = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="if key_resp.keys and not trigOn and not resp_trig_giv:&amp;#10;    trigClock.reset()&amp;#10;    setParallelData(response_trigger)&amp;#10;    trigOn = True&amp;#10;    resp_trig_giv=True&amp;#10;&amp;#10;&amp;#10;if trigOn and trigClock.getTime() &gt;= 0.01:  # 10 ms pulse&amp;#10;    setParallelData(0)  &amp;#10;    trigOn = False&amp;#10;" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="if (((key_resp.keys &amp;&amp; (! trigOn)) &amp;&amp; (! resp_trig_giv))) {&amp;#10;    trigClock.reset();&amp;#10;    setParallelData(response_trigger);&amp;#10;    trigOn = true;&amp;#10;    resp_trig_giv = true;&amp;#10;}&amp;#10;if ((trigOn &amp;&amp; (trigClock.getTime() &gt;= 0.01))) {&amp;#10;    setParallelData(0);&amp;#10;    trigOn = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Routine"/>
@@ -2375,13 +2375,13 @@
       <CodeComponent name="set_trigger_rest" plugin="None">
         <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
-        <Param val="trigClock = core.Clock()&amp;#10;trigOn = False&amp;#10;" valType="extendedCode" updates="constant" name="Begin Experiment"/>
-        <Param val="trigClock = new util.Clock();&amp;#10;trigOn = false;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="trigClock = core.Clock()&amp;#10;&amp;#10;" valType="extendedCode" updates="constant" name="Begin Experiment"/>
+        <Param val="trigClock = new util.Clock();&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
+        <Param val="trigOn = false;&amp;#10;trigPending = false;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="trigOn = False&amp;#10;trigPending = False  " valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
-        <Param val="&amp;#10;replayTrigger = trigger_dict[&quot;replay_break&quot;]&amp;#10;&amp;#10;if fix_cross.status == NOT_STARTED and not trigOn and tThisFlip &gt;= 0.0 - frameTolerance:&amp;#10;    win.callOnFlip(setParallelData, replayTrigger)&amp;#10;    win.callOnFlip(trigClock.reset)&amp;#10;    trigOn = True&amp;#10;&amp;#10;if trigOn and trigClock.getTime() &gt;= 0.01:  # 10 ms pulse&amp;#10;    setParallelData(0)         &amp;#10;    trigOn = False&amp;#10;&amp;#10;" valType="extendedCode" updates="constant" name="Each Frame"/>
-        <Param val="replayTrigger = trigger_dict[&quot;replay_break&quot;];&amp;#10;if ((((fix_cross.status === NOT_STARTED) &amp;&amp; (! trigOn)) &amp;&amp; (tThisFlip &gt;= (0.0 - frameTolerance)))) {&amp;#10;    psychoJS.window.callOnFlip(setParallelData, replayTrigger);&amp;#10;    psychoJS.window.callOnFlip(trigClock.reset);&amp;#10;    trigOn = true;&amp;#10;}&amp;#10;if ((trigOn &amp;&amp; (trigClock.getTime() &gt;= 0.01))) {&amp;#10;    setParallelData(0);&amp;#10;    trigOn = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="&amp;#10;replayTrigger = trigger_dict[&quot;replay_break&quot;]&amp;#10;&amp;#10;if fix_cross.status == NOT_STARTED and (not trigOn) and (not trigPending) and tThisFlip &gt;= 0.0 - frameTolerance:&amp;#10;    win.callOnFlip(setParallelData, replayTrigger)&amp;#10;    win.callOnFlip(trigClock.reset)&amp;#10;    trigPending = True&amp;#10;&amp;#10;if trigPending and trigClock.getTime() &lt; 0.001:&amp;#10;    trigOn = True&amp;#10;    trigPending = False&amp;#10;&amp;#10;# schedule OFF after 10 ms (from the flip-reset clock)&amp;#10;if trigOn and trigClock.getTime() &gt;= 0.01:&amp;#10;    setParallelData(0)&amp;#10;    trigOn = False&amp;#10;" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="replayTrigger = trigger_dict[&quot;replay_break&quot;];&amp;#10;if (((((fix_cross.status === NOT_STARTED) &amp;&amp; (! trigOn)) &amp;&amp; (! trigPending)) &amp;&amp; (tThisFlip &gt;= (0.0 - frameTolerance)))) {&amp;#10;    psychoJS.window.callOnFlip(setParallelData, replayTrigger);&amp;#10;    psychoJS.window.callOnFlip(trigClock.reset);&amp;#10;    trigPending = true;&amp;#10;}&amp;#10;if ((trigPending &amp;&amp; (trigClock.getTime() &lt; 0.001))) {&amp;#10;    trigOn = true;&amp;#10;    trigPending = false;&amp;#10;}&amp;#10;if ((trigOn &amp;&amp; (trigClock.getTime() &gt;= 0.01))) {&amp;#10;    setParallelData(0);&amp;#10;    trigOn = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Routine"/>
@@ -2586,11 +2586,11 @@
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="trigClock = core.Clock()&amp;#10;" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="trigClock = new util.Clock();&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="trigOn = false;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="&amp;#10;trigOn = False&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="trigOn = false;&amp;#10;trigPending = false;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="&amp;#10;trigOn = False&amp;#10;trigPending = False &amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
-        <Param val="QuesTrig = trigger_dict[&quot;question_retrieval&quot;]&amp;#10;&amp;#10;if question_retrieval.status == NOT_STARTED and not trigOn and tThisFlip &gt;= 0.0 - frameTolerance:&amp;#10;    win.callOnFlip(setParallelData, QuesTrig)&amp;#10;    win.callOnFlip(trigClock.reset)&amp;#10;    trigOn = True&amp;#10;&amp;#10;if trigOn and trigClock.getTime() &gt;= 0.01:  # 10 ms pulse&amp;#10;    setParallelData(0)         &amp;#10;    trigOn = False&amp;#10;" valType="extendedCode" updates="constant" name="Each Frame"/>
-        <Param val="QuesTrig = trigger_dict[&quot;question_retrieval&quot;];&amp;#10;if ((((question_retrieval.status === NOT_STARTED) &amp;&amp; (! trigOn)) &amp;&amp; (tThisFlip &gt;= (0.0 - frameTolerance)))) {&amp;#10;    psychoJS.window.callOnFlip(setParallelData, QuesTrig);&amp;#10;    psychoJS.window.callOnFlip(trigClock.reset);&amp;#10;    trigOn = true;&amp;#10;}&amp;#10;if ((trigOn &amp;&amp; (trigClock.getTime() &gt;= 0.01))) {&amp;#10;    setParallelData(0);&amp;#10;    trigOn = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="QuesTrig = trigger_dict[&quot;question_retrieval&quot;]&amp;#10;&amp;#10;if question_retrieval.status == NOT_STARTED and (not trigOn) and (not trigPending) and tThisFlip &gt;= 0.0 - frameTolerance:&amp;#10;    win.callOnFlip(setParallelData, QuesTrig)&amp;#10;    win.callOnFlip(trigClock.reset)&amp;#10;    trigPending = True&amp;#10;&amp;#10;if trigPending and trigClock.getTime() &lt; 0.001:&amp;#10;    trigOn = True&amp;#10;    trigPending = False&amp;#10;&amp;#10;# schedule OFF after 10 ms (from the flip-reset clock)&amp;#10;if trigOn and trigClock.getTime() &gt;= 0.01:&amp;#10;    setParallelData(0)&amp;#10;    trigOn = False&amp;#10;" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="QuesTrig = trigger_dict[&quot;question_retrieval&quot;];&amp;#10;if (((((question_retrieval.status === NOT_STARTED) &amp;&amp; (! trigOn)) &amp;&amp; (! trigPending)) &amp;&amp; (tThisFlip &gt;= (0.0 - frameTolerance)))) {&amp;#10;    psychoJS.window.callOnFlip(setParallelData, QuesTrig);&amp;#10;    psychoJS.window.callOnFlip(trigClock.reset);&amp;#10;    trigPending = true;&amp;#10;}&amp;#10;if ((trigPending &amp;&amp; (trigClock.getTime() &lt; 0.001))) {&amp;#10;    trigOn = true;&amp;#10;    trigPending = false;&amp;#10;}&amp;#10;if ((trigOn &amp;&amp; (trigClock.getTime() &gt;= 0.01))) {&amp;#10;    setParallelData(0);&amp;#10;    trigOn = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Routine"/>
@@ -2700,13 +2700,13 @@
       <CodeComponent name="set_trigger_image_1" plugin="None">
         <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
-        <Param val="trigClock = core.Clock()&amp;#10;trigOn = False&amp;#10;" valType="extendedCode" updates="constant" name="Begin Experiment"/>
-        <Param val="trigClock = new util.Clock();&amp;#10;trigOn = false;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="trigClock = core.Clock()&amp;#10;&amp;#10;" valType="extendedCode" updates="constant" name="Begin Experiment"/>
+        <Param val="trigClock = new util.Clock();&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
+        <Param val="trigOn = false;&amp;#10;trigPending = false;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="&amp;#10;trigOn = False&amp;#10;trigPending = False" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
-        <Param val="ImgTrig = img_firstTrigNumber&amp;#10;&amp;#10;if image_1.status == NOT_STARTED and not trigOn and tThisFlip &gt;= 0.0 - frameTolerance:&amp;#10;    win.callOnFlip(setParallelData, ImgTrig)&amp;#10;    win.callOnFlip(trigClock.reset)&amp;#10;    trigOn = True&amp;#10;&amp;#10;if trigOn and trigClock.getTime() &gt;= 0.01:  # 10 ms pulse&amp;#10;    setParallelData(0)         &amp;#10;    trigOn = False&amp;#10;" valType="extendedCode" updates="constant" name="Each Frame"/>
-        <Param val="ImgTrig = img_firstTrigNumber;&amp;#10;if ((((image_1.status === NOT_STARTED) &amp;&amp; (! trigOn)) &amp;&amp; (tThisFlip &gt;= (0.0 - frameTolerance)))) {&amp;#10;    psychoJS.window.callOnFlip(setParallelData, ImgTrig);&amp;#10;    psychoJS.window.callOnFlip(trigClock.reset);&amp;#10;    trigOn = true;&amp;#10;}&amp;#10;if ((trigOn &amp;&amp; (trigClock.getTime() &gt;= 0.01))) {&amp;#10;    setParallelData(0);&amp;#10;    trigOn = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="ImgTrig = img_firstTrigNumber&amp;#10;&amp;#10;if image_1.status == NOT_STARTED and (not trigOn) and (not trigPending) and tThisFlip &gt;= 0.0 - frameTolerance:&amp;#10;    win.callOnFlip(setParallelData, ImgTrig)&amp;#10;    win.callOnFlip(trigClock.reset)&amp;#10;    trigPending = True&amp;#10;&amp;#10;if trigPending and trigClock.getTime() &lt; 0.001:&amp;#10;    trigOn = True&amp;#10;    trigPending = False&amp;#10;&amp;#10;# schedule OFF after 10 ms (from the flip-reset clock)&amp;#10;if trigOn and trigClock.getTime() &gt;= 0.01:&amp;#10;    setParallelData(0)&amp;#10;    trigOn = False" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="ImgTrig = img_firstTrigNumber;&amp;#10;if (((((image_1.status === NOT_STARTED) &amp;&amp; (! trigOn)) &amp;&amp; (! trigPending)) &amp;&amp; (tThisFlip &gt;= (0.0 - frameTolerance)))) {&amp;#10;    psychoJS.window.callOnFlip(setParallelData, ImgTrig);&amp;#10;    psychoJS.window.callOnFlip(trigClock.reset);&amp;#10;    trigPending = true;&amp;#10;}&amp;#10;if ((trigPending &amp;&amp; (trigClock.getTime() &lt; 0.001))) {&amp;#10;    trigOn = true;&amp;#10;    trigPending = false;&amp;#10;}&amp;#10;if ((trigOn &amp;&amp; (trigClock.getTime() &gt;= 0.01))) {&amp;#10;    setParallelData(0);&amp;#10;    trigOn = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Routine"/>
@@ -2889,11 +2889,11 @@
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="trigClock = core.Clock()&amp;#10;trigOn = False&amp;#10;" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="trigClock = new util.Clock();&amp;#10;trigOn = false;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="trigPending = false;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="&amp;#10;trigPending = False " valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
-        <Param val="ImgTrig = img_secondTrigNumber&amp;#10;&amp;#10;if image_2.status == NOT_STARTED and not trigOn and tThisFlip &gt;= 0.0 - frameTolerance:&amp;#10;    win.callOnFlip(setParallelData, ImgTrig)&amp;#10;    win.callOnFlip(trigClock.reset)&amp;#10;    trigOn = True&amp;#10;&amp;#10;if trigOn and trigClock.getTime() &gt;= 0.01:  # 10 ms pulse&amp;#10;    setParallelData(0)         &amp;#10;    trigOn = False&amp;#10;" valType="extendedCode" updates="constant" name="Each Frame"/>
-        <Param val="ImgTrig = img_secondTrigNumber;&amp;#10;if ((((image_2.status === NOT_STARTED) &amp;&amp; (! trigOn)) &amp;&amp; (tThisFlip &gt;= (0.0 - frameTolerance)))) {&amp;#10;    psychoJS.window.callOnFlip(setParallelData, ImgTrig);&amp;#10;    psychoJS.window.callOnFlip(trigClock.reset);&amp;#10;    trigOn = true;&amp;#10;}&amp;#10;if ((trigOn &amp;&amp; (trigClock.getTime() &gt;= 0.01))) {&amp;#10;    setParallelData(0);&amp;#10;    trigOn = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="ImgTrig = img_secondTrigNumber&amp;#10;&amp;#10;if image_2.status == NOT_STARTED and (not trigOn) and (not trigPending) and tThisFlip &gt;= 0.0 - frameTolerance:&amp;#10;    win.callOnFlip(setParallelData, ImgTrig)&amp;#10;    win.callOnFlip(trigClock.reset)&amp;#10;    trigPending = True&amp;#10;&amp;#10;if trigPending and trigClock.getTime() &lt; 0.001:&amp;#10;    trigOn = True&amp;#10;    trigPending = False&amp;#10;&amp;#10;# schedule OFF after 10 ms (from the flip-reset clock)&amp;#10;if trigOn and trigClock.getTime() &gt;= 0.01:&amp;#10;    setParallelData(0)&amp;#10;    trigOn = False&amp;#10;" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="ImgTrig = img_secondTrigNumber;&amp;#10;if (((((image_2.status === NOT_STARTED) &amp;&amp; (! trigOn)) &amp;&amp; (! trigPending)) &amp;&amp; (tThisFlip &gt;= (0.0 - frameTolerance)))) {&amp;#10;    psychoJS.window.callOnFlip(setParallelData, ImgTrig);&amp;#10;    psychoJS.window.callOnFlip(trigClock.reset);&amp;#10;    trigPending = true;&amp;#10;}&amp;#10;if ((trigPending &amp;&amp; (trigClock.getTime() &lt; 0.001))) {&amp;#10;    trigOn = true;&amp;#10;    trigPending = false;&amp;#10;}&amp;#10;if ((trigOn &amp;&amp; (trigClock.getTime() &gt;= 0.01))) {&amp;#10;    setParallelData(0);&amp;#10;    trigOn = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Routine"/>
@@ -2904,18 +2904,18 @@
       <CodeComponent name="set_trigger_image_3" plugin="None">
         <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
-        <Param val="trigClock = core.Clock()&amp;#10;trigOn = False&amp;#10;" valType="extendedCode" updates="constant" name="Begin Experiment"/>
-        <Param val="trigClock = new util.Clock();&amp;#10;trigOn = false;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="trigClock = core.Clock()&amp;#10;" valType="extendedCode" updates="constant" name="Begin Experiment"/>
+        <Param val="trigClock = new util.Clock();&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
+        <Param val="trigPending = false;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="&amp;#10;trigPending = False" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
-        <Param val="if img_thirdTrigNumber: &amp;#10;    ImgTrig = img_thirdTrigNumber&amp;#10;    if image_3.status == NOT_STARTED and not trigOn and tThisFlip &gt;= 0.0 - frameTolerance:&amp;#10;        win.callOnFlip(setParallelData, ImgTrig)&amp;#10;        win.callOnFlip(trigClock.reset)&amp;#10;        trigOn = True&amp;#10;&amp;#10;" valType="extendedCode" updates="constant" name="Each Frame"/>
-        <Param val="if (img_thirdTrigNumber) {&amp;#10;    ImgTrig = img_thirdTrigNumber;&amp;#10;    if ((((image_3.status === NOT_STARTED) &amp;&amp; (! trigOn)) &amp;&amp; (tThisFlip &gt;= (0.0 - frameTolerance)))) {&amp;#10;        psychoJS.window.callOnFlip(setParallelData, ImgTrig);&amp;#10;        psychoJS.window.callOnFlip(trigClock.reset);&amp;#10;        trigOn = true;&amp;#10;    }&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="if img_thirdTrigNumber: &amp;#10;    ImgTrig = img_thirdTrigNumber&amp;#10;    if image_3.status == NOT_STARTED and (not trigOn) and (not trigPending) and tThisFlip &gt;= 0.0 - frameTolerance:&amp;#10;        win.callOnFlip(setParallelData, ImgTrig)&amp;#10;        win.callOnFlip(trigClock.reset)&amp;#10;        trigPending = True&amp;#10;&amp;#10;&amp;#10;    &amp;#10;" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="if (img_thirdTrigNumber) {&amp;#10;    ImgTrig = img_thirdTrigNumber;&amp;#10;    if (((((image_3.status === NOT_STARTED) &amp;&amp; (! trigOn)) &amp;&amp; (! trigPending)) &amp;&amp; (tThisFlip &gt;= (0.0 - frameTolerance)))) {&amp;#10;        psychoJS.window.callOnFlip(setParallelData, ImgTrig);&amp;#10;        psychoJS.window.callOnFlip(trigClock.reset);&amp;#10;        trigPending = true;&amp;#10;    }&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Routine"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Routine"/>
-        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="True" valType="bool" updates="None" name="disabled"/>
         <Param val="set_trigger_image_3" valType="code" updates="None" name="name"/>
       </CodeComponent>
       <ImageComponent name="image_2" plugin="None">
@@ -3088,11 +3088,11 @@
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="trigClock = core.Clock()&amp;#10;trigOn = False&amp;#10;" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="trigClock = new util.Clock();&amp;#10;trigOn = false;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="trigPending = false;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="trigPending = False&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
-        <Param val="OptTrig = trigger_dict[&quot;response_retrieval_options&quot;]&amp;#10;if slider_main.status == NOT_STARTED and not trigOn and tThisFlip &gt;= 0.0 - frameTolerance:&amp;#10;    win.callOnFlip(setParallelData, OptTrig)&amp;#10;    win.callOnFlip(trigClock.reset)&amp;#10;    trigOn = True&amp;#10;&amp;#10;if trigOn and trigClock.getTime() &gt;= 0.01:  # 10 ms pulse&amp;#10;    setParallelData(0)         &amp;#10;    trigOn = False&amp;#10;" valType="extendedCode" updates="constant" name="Each Frame"/>
-        <Param val="OptTrig = trigger_dict[&quot;response_retrieval_options&quot;];&amp;#10;if ((((slider_main.status === NOT_STARTED) &amp;&amp; (! trigOn)) &amp;&amp; (tThisFlip &gt;= (0.0 - frameTolerance)))) {&amp;#10;    psychoJS.window.callOnFlip(setParallelData, OptTrig);&amp;#10;    psychoJS.window.callOnFlip(trigClock.reset);&amp;#10;    trigOn = true;&amp;#10;}&amp;#10;if ((trigOn &amp;&amp; (trigClock.getTime() &gt;= 0.01))) {&amp;#10;    setParallelData(0);&amp;#10;    trigOn = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="OptTrig = trigger_dict[&quot;response_retrieval_options&quot;]&amp;#10;&amp;#10;if slider_main.status == NOT_STARTED and (not trigOn) and (not trigPending) and tThisFlip &gt;= 0.0 - frameTolerance:&amp;#10;    win.callOnFlip(setParallelData, OptTrig)&amp;#10;    win.callOnFlip(trigClock.reset)&amp;#10;    trigPending = True&amp;#10;&amp;#10;if trigPending and trigClock.getTime() &lt; 0.001:&amp;#10;    trigOn = True&amp;#10;    trigPending = False&amp;#10;&amp;#10;# schedule OFF after 10 ms (from the flip-reset clock)&amp;#10;if trigOn and trigClock.getTime() &gt;= 0.01:&amp;#10;    setParallelData(0)&amp;#10;    trigOn = False&amp;#10;" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="OptTrig = trigger_dict[&quot;response_retrieval_options&quot;];&amp;#10;if (((((slider_main.status === NOT_STARTED) &amp;&amp; (! trigOn)) &amp;&amp; (! trigPending)) &amp;&amp; (tThisFlip &gt;= (0.0 - frameTolerance)))) {&amp;#10;    psychoJS.window.callOnFlip(setParallelData, OptTrig);&amp;#10;    psychoJS.window.callOnFlip(trigClock.reset);&amp;#10;    trigPending = true;&amp;#10;}&amp;#10;if ((trigPending &amp;&amp; (trigClock.getTime() &lt; 0.001))) {&amp;#10;    trigOn = true;&amp;#10;    trigPending = false;&amp;#10;}&amp;#10;if ((trigOn &amp;&amp; (trigClock.getTime() &gt;= 0.01))) {&amp;#10;    setParallelData(0);&amp;#10;    trigOn = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Routine"/>
@@ -3418,8 +3418,8 @@
         <Param val="retr_trig_sent = false;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
         <Param val="&amp;#10;retr_trig_sent = False&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
-        <Param val="RespTrig = trigger_dict[&quot;response_retrieval&quot;]&amp;#10;&amp;#10;if not retr_trig_sent:&amp;#10;    # Builder key component usually stores the last key in resp.keys&amp;#10;    if trial_type in [1, 2]:&amp;#10;        if resp.keys:  # any allowed key was pressed&amp;#10;            retr_trig_sent = True&amp;#10;            setParallelData(RespTrig)&amp;#10;            trigClock.reset()&amp;#10;            trigOn = True&amp;#10;           &amp;#10;    elif trial_type == 3:&amp;#10;        if resp.keys == &quot;return&quot;:&amp;#10;            retr_trig_sent = True&amp;#10;            setParallelData(RespTrig)&amp;#10;            trigClock.reset()&amp;#10;            trigOn = True&amp;#10;&amp;#10;if trigOn and trigClock.getTime() &gt;= 0.01:  # 10 ms pulse&amp;#10;    setParallelData(0)         &amp;#10;    trigOn = False&amp;#10;&amp;#10;" valType="extendedCode" updates="constant" name="Each Frame"/>
-        <Param val="var _pj;&amp;#10;function _pj_snippets(container) {&amp;#10;    function in_es6(left, right) {&amp;#10;        if (((right instanceof Array) || ((typeof right) === &quot;string&quot;))) {&amp;#10;            return (right.indexOf(left) &gt; (- 1));&amp;#10;        } else {&amp;#10;            if (((right instanceof Map) || (right instanceof Set) || (right instanceof WeakMap) || (right instanceof WeakSet))) {&amp;#10;                return right.has(left);&amp;#10;            } else {&amp;#10;                return (left in right);&amp;#10;            }&amp;#10;        }&amp;#10;    }&amp;#10;    container[&quot;in_es6&quot;] = in_es6;&amp;#10;    return container;&amp;#10;}&amp;#10;_pj = {};&amp;#10;_pj_snippets(_pj);&amp;#10;RespTrig = trigger_dict[&quot;response_retrieval&quot;];&amp;#10;if ((! retr_trig_sent)) {&amp;#10;    if (_pj.in_es6(trial_type, [1, 2])) {&amp;#10;        if (resp.keys) {&amp;#10;            retr_trig_sent = true;&amp;#10;            setParallelData(RespTrig);&amp;#10;            trigClock.reset();&amp;#10;            trigOn = true;&amp;#10;        }&amp;#10;    } else {&amp;#10;        if ((trial_type === 3)) {&amp;#10;            if ((resp.keys === &quot;return&quot;)) {&amp;#10;                retr_trig_sent = true;&amp;#10;                setParallelData(RespTrig);&amp;#10;                trigClock.reset();&amp;#10;                trigOn = true;&amp;#10;            }&amp;#10;        }&amp;#10;    }&amp;#10;}&amp;#10;if ((trigOn &amp;&amp; (trigClock.getTime() &gt;= 0.01))) {&amp;#10;    setParallelData(0);&amp;#10;    trigOn = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="RespTrig = trigger_dict[&quot;response_retrieval&quot;]&amp;#10;&amp;#10;if not retr_trig_sent:&amp;#10;    # Builder key component usually stores the last key in resp.keys&amp;#10;    if trial_type in [1, 2]:&amp;#10;        if resp.keys:  # any allowed key was pressed&amp;#10;            retr_trig_sent = True&amp;#10;            trigClock.reset()&amp;#10;&amp;#10;            setParallelData(RespTrig)&amp;#10;            trigOn = True&amp;#10;           &amp;#10;    elif trial_type == 3:&amp;#10;        if resp.keys == &quot;return&quot;:&amp;#10;            retr_trig_sent = True&amp;#10;            trigClock.reset()&amp;#10;&amp;#10;            setParallelData(RespTrig)&amp;#10;            trigOn = True&amp;#10;&amp;#10;if trigOn and trigClock.getTime() &gt;= 0.01:  # 10 ms pulse&amp;#10;    setParallelData(0)         &amp;#10;    trigOn = False&amp;#10;&amp;#10;" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="var _pj;&amp;#10;function _pj_snippets(container) {&amp;#10;    function in_es6(left, right) {&amp;#10;        if (((right instanceof Array) || ((typeof right) === &quot;string&quot;))) {&amp;#10;            return (right.indexOf(left) &gt; (- 1));&amp;#10;        } else {&amp;#10;            if (((right instanceof Map) || (right instanceof Set) || (right instanceof WeakMap) || (right instanceof WeakSet))) {&amp;#10;                return right.has(left);&amp;#10;            } else {&amp;#10;                return (left in right);&amp;#10;            }&amp;#10;        }&amp;#10;    }&amp;#10;    container[&quot;in_es6&quot;] = in_es6;&amp;#10;    return container;&amp;#10;}&amp;#10;_pj = {};&amp;#10;_pj_snippets(_pj);&amp;#10;RespTrig = trigger_dict[&quot;response_retrieval&quot;];&amp;#10;if ((! retr_trig_sent)) {&amp;#10;    if (_pj.in_es6(trial_type, [1, 2])) {&amp;#10;        if (resp.keys) {&amp;#10;            retr_trig_sent = true;&amp;#10;            trigClock.reset();&amp;#10;            setParallelData(RespTrig);&amp;#10;            trigOn = true;&amp;#10;        }&amp;#10;    } else {&amp;#10;        if ((trial_type === 3)) {&amp;#10;            if ((resp.keys === &quot;return&quot;)) {&amp;#10;                retr_trig_sent = true;&amp;#10;                trigClock.reset();&amp;#10;                setParallelData(RespTrig);&amp;#10;                trigOn = true;&amp;#10;            }&amp;#10;        }&amp;#10;    }&amp;#10;}&amp;#10;if ((trigOn &amp;&amp; (trigClock.getTime() &gt;= 0.01))) {&amp;#10;    setParallelData(0);&amp;#10;    trigOn = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Routine"/>
@@ -3904,11 +3904,11 @@
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="trigClock = core.Clock()" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="trigClock = new util.Clock();&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="trigNumber = trigger_dict[&quot;start/end&quot;];&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="trigNumber = trigger_dict[&quot;start/end&quot;]&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="trigNumber = trigger_dict[&quot;start/end&quot;];&amp;#10;trigPending = false;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="trigNumber = trigger_dict[&quot;start/end&quot;]&amp;#10;trigPending = False  " valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
-        <Param val="if instruction_part7.status == NOT_STARTED and not trigOn and tThisFlip &gt;= 0.0 - frameTolerance:&amp;#10;    win.callOnFlip(setParallelData, trigNumber)&amp;#10;    win.callOnFlip(trigClock.reset)&amp;#10;    trigOn = True&amp;#10;&amp;#10;if trigOn and trigClock.getTime() &gt;= 0.01:  # 10 ms pulse&amp;#10;    setParallelData(0)         &amp;#10;    trigOn = False&amp;#10;" valType="extendedCode" updates="constant" name="Each Frame"/>
-        <Param val="if ((((instruction_part7.status === NOT_STARTED) &amp;&amp; (! trigOn)) &amp;&amp; (tThisFlip &gt;= (0.0 - frameTolerance)))) {&amp;#10;    psychoJS.window.callOnFlip(setParallelData, trigNumber);&amp;#10;    psychoJS.window.callOnFlip(trigClock.reset);&amp;#10;    trigOn = true;&amp;#10;}&amp;#10;if ((trigOn &amp;&amp; (trigClock.getTime() &gt;= 0.01))) {&amp;#10;    setParallelData(0);&amp;#10;    trigOn = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="if instruction_part7.status == NOT_STARTED and (not trigOn) and (not trigPending) and tThisFlip &gt;= 0.0 - frameTolerance:&amp;#10;    win.callOnFlip(setParallelData, trigNumber)&amp;#10;    win.callOnFlip(trigClock.reset)&amp;#10;    trigPending = True&amp;#10;&amp;#10;if trigPending and trigClock.getTime() &lt; 0.001:&amp;#10;    trigOn = True&amp;#10;    trigPending = False&amp;#10;&amp;#10;# schedule OFF after 10 ms (from the flip-reset clock)&amp;#10;if trigOn and trigClock.getTime() &gt;= 0.01:&amp;#10;    setParallelData(0)&amp;#10;    trigOn = False&amp;#10;" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="if (((((instruction_part7.status === NOT_STARTED) &amp;&amp; (! trigOn)) &amp;&amp; (! trigPending)) &amp;&amp; (tThisFlip &gt;= (0.0 - frameTolerance)))) {&amp;#10;    psychoJS.window.callOnFlip(setParallelData, trigNumber);&amp;#10;    psychoJS.window.callOnFlip(trigClock.reset);&amp;#10;    trigPending = true;&amp;#10;}&amp;#10;if ((trigPending &amp;&amp; (trigClock.getTime() &lt; 0.001))) {&amp;#10;    trigOn = true;&amp;#10;    trigPending = false;&amp;#10;}&amp;#10;if ((trigOn &amp;&amp; (trigClock.getTime() &gt;= 0.01))) {&amp;#10;    setParallelData(0);&amp;#10;    trigOn = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Routine"/>
@@ -4020,10 +4020,10 @@
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="trigClock = core.Clock()&amp;#10;" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="trigClock = new util.Clock();&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="trig_sent = {&quot;image_01&quot;: false, &quot;image_02&quot;: false, &quot;image_03&quot;: false, &quot;image_04&quot;: false, &quot;image_05&quot;: false};&amp;#10;image_components = {&quot;image_01&quot;: {&quot;comp&quot;: image_01, &quot;trig&quot;: fast_img_1_trig}, &quot;image_02&quot;: {&quot;comp&quot;: image_02, &quot;trig&quot;: fast_img_2_trig}, &quot;image_03&quot;: {&quot;comp&quot;: image_03, &quot;trig&quot;: fast_img_3_trig}, &quot;image_04&quot;: {&quot;comp&quot;: image_04, &quot;trig&quot;: fast_img_4_trig}, &quot;image_05&quot;: {&quot;comp&quot;: image_05, &quot;trig&quot;: fast_img_5_trig}};&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="&amp;#10;trig_sent = {&amp;#10;    'image_01': False,&amp;#10;    'image_02': False,&amp;#10;    'image_03': False,&amp;#10;    'image_04': False,&amp;#10;    'image_05': False,&amp;#10;}&amp;#10;&amp;#10;image_components = {&amp;#10;    'image_01': {'comp': image_01, 'trig': fast_img_1_trig},&amp;#10;    'image_02': {'comp': image_02, 'trig': fast_img_2_trig},&amp;#10;    'image_03': {'comp': image_03, 'trig': fast_img_3_trig},&amp;#10;    'image_04': {'comp': image_04, 'trig': fast_img_4_trig},&amp;#10;    'image_05': {'comp': image_05, 'trig': fast_img_5_trig},&amp;#10;}&amp;#10;&amp;#10;&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="trigOn = false;&amp;#10;warmup = 0.2;&amp;#10;trig_sent = {&quot;image_01&quot;: false, &quot;image_02&quot;: false, &quot;image_03&quot;: false, &quot;image_04&quot;: false, &quot;image_05&quot;: false};&amp;#10;image_components = {&quot;image_01&quot;: {&quot;comp&quot;: image_01, &quot;trig&quot;: fast_img_1_trig, &quot;start_time&quot;: (mask_dur + warmup)}, &quot;image_02&quot;: {&quot;comp&quot;: image_02, &quot;trig&quot;: fast_img_2_trig, &quot;start_time&quot;: ((fast_img_dur + (mask_dur * 2)) + warmup)}, &quot;image_03&quot;: {&quot;comp&quot;: image_03, &quot;trig&quot;: fast_img_3_trig, &quot;start_time&quot;: (((fast_img_dur * 2) + (mask_dur * 3)) + warmup)}, &quot;image_04&quot;: {&quot;comp&quot;: image_04, &quot;trig&quot;: fast_img_4_trig, &quot;start_time&quot;: (((fast_img_dur * 3) + (mask_dur * 4)) + warmup)}, &quot;image_05&quot;: {&quot;comp&quot;: image_05, &quot;trig&quot;: fast_img_5_trig, &quot;start_time&quot;: (((fast_img_dur * 4) + (mask_dur * 5)) + warmup)}};&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="trigOn = False&amp;#10;warmup = 0.2&amp;#10;&amp;#10;trig_sent = {&amp;#10;    'image_01': False,&amp;#10;    'image_02': False,&amp;#10;    'image_03': False,&amp;#10;    'image_04': False,&amp;#10;    'image_05': False,&amp;#10;}&amp;#10;&amp;#10;image_components = {&amp;#10;    'image_01': {'comp': image_01, 'trig': fast_img_1_trig, 'start_time': mask_dur + warmup},&amp;#10;    'image_02': {'comp': image_02, 'trig': fast_img_2_trig, 'start_time': fast_img_dur + mask_dur*2 + warmup},&amp;#10;    'image_03': {'comp': image_03, 'trig': fast_img_3_trig, 'start_time': fast_img_dur * 2 + mask_dur*3 + warmup},&amp;#10;    'image_04': {'comp': image_04, 'trig': fast_img_4_trig, 'start_time': fast_img_dur * 3 + mask_dur*4 + warmup},&amp;#10;    'image_05': {'comp': image_05, 'trig': fast_img_5_trig, 'start_time': fast_img_dur * 4 + mask_dur*5 + warmup},&amp;#10;}&amp;#10;&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
-        <Param val="&amp;#10;for img_name, img_dict in image_components.items():&amp;#10;    if not trig_sent[img_name]:  &amp;#10;        image_comp = img_dict['comp']&amp;#10;        trig_value = img_dict['trig']&amp;#10;        if image_comp.status == NOT_STARTED and not trigOn and tThisFlip &gt;= 0.0 - frameTolerance:&amp;#10;            #nextFlip = win.getFutureFlipTime(clock='ptb') #getting next flip time&amp;#10;            &amp;#10;            win.callOnFlip(setParallelData, trig_value)&amp;#10;            win.callOnFlip(trigClock.reset)&amp;#10;            trigOn = True&amp;#10;            trig_sent[img_name] = True  # Mark as sent&amp;#10;            &amp;#10;if trigOn and trigClock.getTime() &gt;= 0.01:  # 10 ms pulse&amp;#10;    setParallelData(0)         &amp;#10;    trigOn = False&amp;#10;&amp;#10;" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="if trigOn and trigClock.getTime() &gt;= 0.01:  # 10 ms pulse&amp;#10;    win.callOnFlip(setParallelData, 0) # off should be on a flip, not mid frame&amp;#10;    trigOn = False&amp;#10;&amp;#10;for img_name, img_dict in image_components.items():&amp;#10;    if not trig_sent[img_name]:  &amp;#10;        image_comp = img_dict['comp']&amp;#10;        trig_value = img_dict['trig']&amp;#10;        trig_start = img_dict['start_time']&amp;#10;        if (image_comp.status == NOT_STARTED) and (not trigOn) and (tThisFlip &gt;= trig_start - frameTolerance):&amp;#10;            #nextFlip = win.getFutureFlipTime(clock='ptb') #getting next flip time&amp;#10;&amp;#10;            win.callOnFlip(setParallelData, trig_value)&amp;#10;            win.callOnFlip(trigClock.reset)&amp;#10;            trigOn = True&amp;#10;            trig_sent[img_name] = True  # Mark as sent&amp;#10;            break  # important: only ever schedule ONE trigger per frame&amp;#10;            &amp;#10;" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="/* Syntax Error: Fix Python code */" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
@@ -4053,7 +4053,7 @@
         <Param val="(0.15, 0.15)" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
-        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="0.0 + warmup" valType="code" updates="None" name="startVal"/>
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
         <Param val="mask_dur" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
@@ -4082,7 +4082,7 @@
         <Param val="(0.15, 0.15)" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
-        <Param val="mask_dur" valType="code" updates="None" name="startVal"/>
+        <Param val="mask_dur + warmup" valType="code" updates="None" name="startVal"/>
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
         <Param val="fast_img_dur" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
@@ -4111,7 +4111,7 @@
         <Param val="(0.15, 0.15)" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
-        <Param val="fast_img_dur + mask_dur" valType="code" updates="None" name="startVal"/>
+        <Param val="fast_img_dur + mask_dur + warmup" valType="code" updates="None" name="startVal"/>
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
         <Param val="mask_dur" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
@@ -4140,7 +4140,7 @@
         <Param val="(0.15, 0.15)" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
-        <Param val="fast_img_dur + mask_dur*2" valType="code" updates="None" name="startVal"/>
+        <Param val="fast_img_dur + mask_dur*2 + warmup" valType="code" updates="None" name="startVal"/>
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
         <Param val="fast_img_dur" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
@@ -4169,7 +4169,7 @@
         <Param val="(0.15, 0.15)" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
-        <Param val="fast_img_dur *2 + mask_dur*2" valType="code" updates="None" name="startVal"/>
+        <Param val="fast_img_dur *2 + mask_dur*2 + warmup" valType="code" updates="None" name="startVal"/>
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
         <Param val="mask_dur" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
@@ -4198,7 +4198,7 @@
         <Param val="(0.15, 0.15)" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
-        <Param val="fast_img_dur * 2 + mask_dur*3" valType="code" updates="None" name="startVal"/>
+        <Param val="fast_img_dur * 2 + mask_dur*3 + warmup" valType="code" updates="None" name="startVal"/>
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
         <Param val="fast_img_dur" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
@@ -4227,7 +4227,7 @@
         <Param val="(0.15, 0.15)" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
-        <Param val="fast_img_dur *3 + mask_dur*3" valType="code" updates="None" name="startVal"/>
+        <Param val="fast_img_dur *3 + mask_dur*3 + warmup" valType="code" updates="None" name="startVal"/>
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
         <Param val="mask_dur" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
@@ -4256,7 +4256,7 @@
         <Param val="(0.15, 0.15)" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
-        <Param val="fast_img_dur *3 + mask_dur*4 " valType="code" updates="None" name="startVal"/>
+        <Param val="fast_img_dur *3 + mask_dur*4 + warmup" valType="code" updates="None" name="startVal"/>
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
         <Param val="fast_img_dur" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
@@ -4285,7 +4285,7 @@
         <Param val="(0.15, 0.15)" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
-        <Param val="fast_img_dur *4 + mask_dur*4 " valType="code" updates="None" name="startVal"/>
+        <Param val="fast_img_dur *4 + mask_dur*4 + warmup" valType="code" updates="None" name="startVal"/>
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
         <Param val="mask_dur" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
@@ -4314,7 +4314,7 @@
         <Param val="(0.15, 0.15)" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
-        <Param val="fast_img_dur * 4 + mask_dur*5" valType="code" updates="None" name="startVal"/>
+        <Param val="fast_img_dur * 4 + mask_dur*5 + warmup" valType="code" updates="None" name="startVal"/>
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
         <Param val="fast_img_dur" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
@@ -4343,7 +4343,7 @@
         <Param val="(0.15, 0.15)" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
-        <Param val="fast_img_dur * 5 + mask_dur*5" valType="code" updates="None" name="startVal"/>
+        <Param val="fast_img_dur * 5 + mask_dur*5 + warmup" valType="code" updates="None" name="startVal"/>
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
         <Param val="mask_dur" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
