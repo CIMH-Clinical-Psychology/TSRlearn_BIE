@@ -204,8 +204,8 @@
         <Param val="trigNumber = trigger_numbers_dict[&quot;start/end&quot;];&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
         <Param val="trigNumber = trigger_numbers_dict[&quot;start/end&quot;]&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
-        <Param val="&amp;#10;&amp;#10;if frameN == 0 and not trigOn:&amp;#10;    win.callOnFlip(setParallelData, trigNumber)&amp;#10;    win.callOnFlip(trigClock.reset)  &amp;#10;    trigOn = True&amp;#10;&amp;#10;if trigOn and trigClock.getTime() &gt;= 0.01:  # 10 ms pulse&amp;#10;    setParallelData(0)&amp;#10;    trigOn = False&amp;#10;" valType="extendedCode" updates="constant" name="Each Frame"/>
-        <Param val="if (((frameN === 0) &amp;&amp; (! trigOn))) {&amp;#10;    psychoJS.window.callOnFlip(setParallelData, trigNumber);&amp;#10;    psychoJS.window.callOnFlip(trigClock.reset);&amp;#10;    trigOn = true;&amp;#10;}&amp;#10;if ((trigOn &amp;&amp; (trigClock.getTime() &gt;= 0.01))) {&amp;#10;    setParallelData(0);&amp;#10;    trigOn = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="&amp;#10;&amp;#10;if frameN == 0 and not trigOn:&amp;#10;    setParallelData(trigNumber)&amp;#10;    trigClock.reset()  &amp;#10;    trigOn = True&amp;#10;&amp;#10;if trigOn and trigClock.getTime() &gt;= 0.01:  # 10 ms pulse&amp;#10;    setParallelData(0)&amp;#10;    trigOn = False&amp;#10;" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="if (((frameN === 0) &amp;&amp; (! trigOn))) {&amp;#10;    setParallelData(trigNumber);&amp;#10;    trigClock.reset();&amp;#10;    trigOn = true;&amp;#10;}&amp;#10;if ((trigOn &amp;&amp; (trigClock.getTime() &gt;= 0.01))) {&amp;#10;    setParallelData(0);&amp;#10;    trigOn = false;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Routine"/>
@@ -1013,7 +1013,7 @@
         <Param val="$[0,0,0]" valType="color" updates="None" name="color"/>
         <Param val="rgb" valType="str" updates="None" name="colorSpace"/>
         <Param val="" valType="str" updates="constant" name="desc"/>
-        <Param val="True" valType="bool" updates="None" name="disabled"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="False" valType="code" updates="None" name="forceNonSlip"/>
         <Param val="image_pres_prc" valType="code" updates="None" name="name"/>
@@ -1060,7 +1060,7 @@
         <Param val="$[0,0,0]" valType="color" updates="None" name="color"/>
         <Param val="rgb" valType="str" updates="None" name="colorSpace"/>
         <Param val="" valType="str" updates="constant" name="desc"/>
-        <Param val="True" valType="bool" updates="None" name="disabled"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="False" valType="code" updates="None" name="forceNonSlip"/>
         <Param val="ITI_prc" valType="code" updates="None" name="name"/>
@@ -1279,8 +1279,8 @@
         <Param val="trigNumber = trigger_numbers_dict[&quot;word presentation&quot;];&amp;#10;spoken_word.stop();&amp;#10;soundScheduled = false;&amp;#10;trigOnFlipTime = null;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
         <Param val="trigNumber = trigger_numbers_dict[&quot;word presentation&quot;]&amp;#10;&amp;#10;&amp;#10;spoken_word.stop()  # make sure nothing is still playing from the previous trial&amp;#10;soundScheduled = False&amp;#10;trigOnFlipTime = None" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
-        <Param val="if (not soundScheduled) and tThisFlip &gt;= 0.0 - frameTolerance:&amp;#10;    spoken_word.stop()&amp;#10;    spoken_word.setSound(f&quot;sounds/{word_shown}.mp3&quot;, secs=1)&amp;#10;&amp;#10;    nextFlipPTB = win.getFutureFlipTime(clock='ptb')&amp;#10;    spoken_word.play(when=nextFlipPTB)&amp;#10;&amp;#10;    win.callOnFlip(setParallelData, trigNumber)&amp;#10;    trigOnFlipTime = tThisFlipGlobal   # time of the upcoming flip (same one used for ON)&amp;#10;&amp;#10;    soundScheduled = True&amp;#10;&amp;#10;# Off after 10 ms (measured in global flip time)&amp;#10;if trigOnFlipTime is not None and (tThisFlipGlobal - trigOnFlipTime) &gt;= 0.01:&amp;#10;    win.callOnFlip(setParallelData, 0)&amp;#10;    trigOnFlipTime = None" valType="extendedCode" updates="constant" name="Each Frame"/>
-        <Param val="if (((! soundScheduled) &amp;&amp; (tThisFlip &gt;= (0.0 - frameTolerance)))) {&amp;#10;    spoken_word.stop();&amp;#10;    spoken_word.setSound(`sounds/${word_shown}.mp3`, {&quot;secs&quot;: 1});&amp;#10;    nextFlipPTB = psychoJS.window.getFutureFlipTime({&quot;clock&quot;: &quot;ptb&quot;});&amp;#10;    spoken_word.play({&quot;when&quot;: nextFlipPTB});&amp;#10;    psychoJS.window.callOnFlip(setParallelData, trigNumber);&amp;#10;    trigOnFlipTime = tThisFlipGlobal;&amp;#10;    soundScheduled = true;&amp;#10;}&amp;#10;if (((trigOnFlipTime !== null) &amp;&amp; ((tThisFlipGlobal - trigOnFlipTime) &gt;= 0.01))) {&amp;#10;    psychoJS.window.callOnFlip(setParallelData, 0);&amp;#10;    trigOnFlipTime = null;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="if (not soundScheduled) and tThisFlip &gt;= 0.0 - frameTolerance:&amp;#10;    spoken_word.stop()&amp;#10;    spoken_word.setSound(f&quot;sounds/{word_shown}.mp3&quot;, secs=1)&amp;#10;&amp;#10;    nextFlipPTB = win.getFutureFlipTime(clock='ptb')&amp;#10;    win.callOnFlip(setParallelData, trigNumber)&amp;#10;    spoken_word.play(when=nextFlipPTB)&amp;#10;&amp;#10;    trigOnFlipTime = tThisFlipGlobal   # time of the upcoming flip &amp;#10;&amp;#10;    soundScheduled = True&amp;#10;&amp;#10;# Off after 10 ms (measured in global flip time)&amp;#10;if trigOnFlipTime is not None and (tThisFlipGlobal - trigOnFlipTime) &gt;= 0.01:&amp;#10;    win.callOnFlip(setParallelData, 0)&amp;#10;    trigOnFlipTime = None" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="if (((! soundScheduled) &amp;&amp; (tThisFlip &gt;= (0.0 - frameTolerance)))) {&amp;#10;    spoken_word.stop();&amp;#10;    spoken_word.setSound(`sounds/${word_shown}.mp3`, {&quot;secs&quot;: 1});&amp;#10;    nextFlipPTB = psychoJS.window.getFutureFlipTime({&quot;clock&quot;: &quot;ptb&quot;});&amp;#10;    psychoJS.window.callOnFlip(setParallelData, trigNumber);&amp;#10;    spoken_word.play({&quot;when&quot;: nextFlipPTB});&amp;#10;    trigOnFlipTime = tThisFlipGlobal;&amp;#10;    soundScheduled = true;&amp;#10;}&amp;#10;if (((trigOnFlipTime !== null) &amp;&amp; ((tThisFlipGlobal - trigOnFlipTime) &gt;= 0.01))) {&amp;#10;    psychoJS.window.callOnFlip(setParallelData, 0);&amp;#10;    trigOnFlipTime = null;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
         <Param val="spoken_word.stop();&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
@@ -1308,7 +1308,7 @@
       <SoundComponent name="spoken_word" plugin="None">
         <Param val="" valType="str" updates="None" name="deviceLabel"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
-        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="1" valType="code" updates="None" name="durationEstim"/>
         <Param val="False" valType="bool" updates="constant" name="forceEndRoutine"/>
         <Param val="True" valType="bool" updates="constant" name="hamming"/>
         <Param val="1" valType="code" updates="None" name="latencyClass"/>
@@ -1501,7 +1501,7 @@
         <Param val="$[0,0,0]" valType="color" updates="None" name="color"/>
         <Param val="rgb" valType="str" updates="None" name="colorSpace"/>
         <Param val="" valType="str" updates="constant" name="desc"/>
-        <Param val="True" valType="bool" updates="None" name="disabled"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="False" valType="code" updates="None" name="forceNonSlip"/>
         <Param val="sound_pres_prc" valType="code" updates="None" name="name"/>
