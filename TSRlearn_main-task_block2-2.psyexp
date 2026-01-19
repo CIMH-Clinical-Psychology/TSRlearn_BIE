@@ -4614,7 +4614,7 @@
     <Routine name="instructions_02"/>
     <LoopInitiator loopType="TrialHandler" name="block_B">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
-      <Param name="conditions" updates="None" val="[{'condFilelearning': 'sequences/learning_blockB_fixed-middle-10_17.xlsx', 'condFileretr': 'sequences/retrieval_blockB_fixed-middle-10_17.xlsx'}]" valType="str"/>
+      <Param name="conditions" updates="None" val="[{'condFilelearning': 'sequences/learning_blockB_fixed-middle-10_02.xlsx', 'condFileretr': 'sequences/retrieval_blockB_fixed-middle-10_02.xlsx'}]" valType="str"/>
       <Param name="conditionsFile" updates="None" val="sequences/TSRlearn_blockB.xlsx" valType="file"/>
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
       <Param name="isTrials" updates="None" val="False" valType="bool"/>
