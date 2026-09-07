@@ -1257,7 +1257,7 @@
         <Param val="progress_bar_breaks" valType="code" updates="None" name="name"/>
         <Param val="1" valType="num" updates="constant" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="(-0.35, -0.1)" valType="list" updates="constant" name="pos"/>
+        <Param val="(-0.35, -0.07)" valType="list" updates="constant" name="pos"/>
         <Param val="frac" valType="code" updates="set every frame" name="progress"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="(0.75, 0.025)" valType="list" updates="constant" name="size"/>

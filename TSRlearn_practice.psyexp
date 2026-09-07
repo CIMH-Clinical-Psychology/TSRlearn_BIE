@@ -585,12 +585,12 @@
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
-        <Param val="bids.schedule_onset(instruction_part4,&amp;#10;                        type_of_stimulus=&quot;instructions&quot;,&amp;#10;                        component_label=&quot;instruction_part4&quot;)" valType="extendedCode" updates="constant" name="Each Frame"/>
-        <Param val="bids.schedule_onset(instruction_part4, {&quot;type_of_stimulus&quot;: &quot;instructions&quot;, &quot;component_label&quot;: &quot;instruction_part4&quot;});&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="bids.schedule_onset(instruction_part5,&amp;#10;                        type_of_stimulus=&quot;instructions&quot;,&amp;#10;                        component_label=&quot;instruction_part5&quot;)" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="bids.schedule_onset(instruction_part5, {&quot;type_of_stimulus&quot;: &quot;instructions&quot;, &quot;component_label&quot;: &quot;instruction_part5&quot;});&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
-        <Param val="bids.mark_offset(instruction_part4);&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
-        <Param val="bids.mark_offset(instruction_part4) " valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="bids.mark_offset(instruction_part5);&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="bids.mark_offset(instruction_part5) " valType="extendedCode" updates="constant" name="End Routine"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="bids_instruc_5" valType="code" updates="None" name="name"/>
       </CodeComponent>
@@ -1083,8 +1083,8 @@
         <Param val="bids.schedule_onset(instruction_part6, {&quot;type_of_stimulus&quot;: &quot;instructions&quot;, &quot;component_label&quot;: &quot;instruction_part6&quot;});&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
-        <Param val="bids.mark_offset(instruction_part4);&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
-        <Param val="bids.mark_offset(instruction_part4) " valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="bids.mark_offset(instruction_part6);&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="bids.mark_offset(instruction_part6) " valType="extendedCode" updates="constant" name="End Routine"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="bids_instruc_6" valType="code" updates="None" name="name"/>
       </CodeComponent>
@@ -1215,7 +1215,7 @@
         <Param val="background_info_2" valType="code" updates="None" name="name"/>
         <Param val="" valType="num" updates="constant" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="(0, -0.2)" valType="list" updates="constant" name="pos"/>
+        <Param val="(0, -0.25)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
@@ -1291,7 +1291,7 @@
         <Param val="background_info" valType="code" updates="None" name="name"/>
         <Param val="" valType="num" updates="constant" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="(0, -0.2)" valType="list" updates="constant" name="pos"/>
+        <Param val="(0, -0.25)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
@@ -1367,7 +1367,7 @@
         <Param val="background_info_3" valType="code" updates="None" name="name"/>
         <Param val="" valType="num" updates="constant" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="(0, -0.2)" valType="list" updates="constant" name="pos"/>
+        <Param val="(0, -0.25)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
@@ -1443,7 +1443,7 @@
         <Param val="background_info_4" valType="code" updates="None" name="name"/>
         <Param val="" valType="num" updates="constant" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="(0, -0.2)" valType="list" updates="constant" name="pos"/>
+        <Param val="(0, -0.25)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
@@ -1615,14 +1615,14 @@
         <Param val="background_info_6" valType="code" updates="None" name="name"/>
         <Param val="" valType="num" updates="constant" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="(0, -0.2)" valType="list" updates="constant" name="pos"/>
+        <Param val="(0, -0.25)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
-        <Param val="retr_dur" valType="code" updates="constant" name="stopVal"/>
+        <Param val="retr_dur + 5" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
@@ -1654,12 +1654,12 @@
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
-        <Param val="bids.schedule_onset(instruction_part7,&amp;#10;                        type_of_stimulus=&quot;instructions&quot;,&amp;#10;                        component_label=&quot;instruction_part7&quot;)" valType="extendedCode" updates="constant" name="Each Frame"/>
-        <Param val="bids.schedule_onset(instruction_part7, {&quot;type_of_stimulus&quot;: &quot;instructions&quot;, &quot;component_label&quot;: &quot;instruction_part7&quot;});&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="bids.schedule_onset(instruction_part7,&amp;#10;                        type_of_stimulus=&quot;instructions&quot;,&amp;#10;                        component_label=&quot;instruction_part8&quot;)" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="bids.schedule_onset(instruction_part7, {&quot;type_of_stimulus&quot;: &quot;instructions&quot;, &quot;component_label&quot;: &quot;instruction_part8&quot;});&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
-        <Param val="bids.mark_offset(instruction_part4);&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
-        <Param val="bids.mark_offset(instruction_part4) " valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="bids.mark_offset(instruction_part7);&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="bids.mark_offset(instruction_part7) " valType="extendedCode" updates="constant" name="End Routine"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="bids_instruc_7" valType="code" updates="None" name="name"/>
       </CodeComponent>
@@ -2155,7 +2155,7 @@
         <Param val="background_info_5" valType="code" updates="None" name="name"/>
         <Param val="" valType="num" updates="constant" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="(0, -0.2)" valType="list" updates="constant" name="pos"/>
+        <Param val="(0, -0.25)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
@@ -2443,19 +2443,118 @@
         <Param val="background_info_7" valType="code" updates="None" name="name"/>
         <Param val="" valType="num" updates="constant" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
-        <Param val="(0, -0.2)" valType="list" updates="constant" name="pos"/>
+        <Param val="(0, -0.25)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
-        <Param val="retr_dur_slider" valType="code" updates="constant" name="stopVal"/>
+        <Param val="retr_dur_slider + 5" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
         <Param val="128" valType="num" updates="constant" name="texture resolution"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="code" updates="None" name="validator"/>
       </ImageComponent>
+    </Routine>
+    <Routine name="instruction_07">
+      <RoutineSettingsComponent name="instruction_07" plugin="None">
+        <Param val="none" valType="str" updates="None" name="backgroundFit"/>
+        <Param val="" valType="str" updates="None" name="backgroundImg"/>
+        <Param val="$[0,0,0]" valType="color" updates="None" name="color"/>
+        <Param val="rgb" valType="str" updates="None" name="colorSpace"/>
+        <Param val="" valType="str" updates="constant" name="desc"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="False" valType="code" updates="None" name="forceNonSlip"/>
+        <Param val="instruction_07" valType="code" updates="None" name="name"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="constant" name="skipIf"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="False" valType="bool" updates="None" name="useWindowParams"/>
+      </RoutineSettingsComponent>
+      <CodeComponent name="bids_instruc_8" plugin="None">
+        <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
+        <Param val="bids.schedule_onset(instruction_part8,&amp;#10;                        type_of_stimulus=&quot;instructions&quot;,&amp;#10;                        component_label=&quot;instruction_part7&quot;)" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="bids.schedule_onset(instruction_part8, {&quot;type_of_stimulus&quot;: &quot;instructions&quot;, &quot;component_label&quot;: &quot;instruction_part7&quot;});&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
+        <Param val="bids.mark_offset(instruction_part8);&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="bids.mark_offset(instruction_part8) " valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="bids_instruc_8" valType="code" updates="None" name="name"/>
+      </CodeComponent>
+      <TextComponent name="instruction_part8" plugin="None">
+        <Param val="white" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="False" valType="code" updates="constant" name="draggable"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="None" valType="str" updates="constant" name="flip"/>
+        <Param val="Arial" valType="str" updates="constant" name="font"/>
+        <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
+        <Param val="0.03" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="instruction_part8" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(0, 0)" valType="list" updates="constant" name="pos"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="" valType="str" updates="constant" name="text"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="code" updates="None" name="validator"/>
+        <Param val="" valType="num" updates="constant" name="wrapWidth"/>
+      </TextComponent>
+      <CodeComponent name="instruction_part8_text" plugin="None">
+        <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
+        <Param val="&amp;#10;" valType="extendedCode" updates="constant" name="Begin Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
+        <Param val="if ((language === &quot;english&quot;)) {&amp;#10;    instruction_part8.text = &quot;During practice, the complete sequence will be shown at the bottom of the screen, and you can use it to answer the questions.\nThis is only an aid for the practice trials. In the main task the sequence will no longer be shown, and you will have to reconstruct it from memory to answer.\n[Press the return key to start the practice trials.]&quot;;&amp;#10;}&amp;#10;if ((language === &quot;french&quot;)) {&amp;#10;    instruction_part8.text = &quot;Pendant l'entra\u00eenement, la s\u00e9quence compl\u00e8te sera affich\u00e9e en bas de l'\u00e9cran et vous pourrez l'utiliser pour r\u00e9pondre aux questions.\nIl s'agit uniquement d'une aide pour les essais d'entra\u00eenement. Dans la t\u00e2che principale, la s\u00e9quence ne sera plus affich\u00e9e et vous devrez la reconstruire de m\u00e9moire pour r\u00e9pondre.\n[Appuyez sur la touche Entr\u00e9e pour commencer les essais d'entra\u00eenement.]&quot;;&amp;#10;}&amp;#10;if ((language === &quot;german&quot;)) {&amp;#10;    instruction_part8.text = &quot;W\u00e4hrend der \u00dcbung wird die vollst\u00e4ndige Sequenz unten auf dem Bildschirm angezeigt, und Sie k\u00f6nnen sie zur Beantwortung der Fragen verwenden.\nDies ist nur eine Hilfe f\u00fcr die \u00dcbungsdurchg\u00e4nge. In der Hauptaufgabe wird die Sequenz nicht mehr angezeigt, und Sie m\u00fcssen sie zur Beantwortung aus dem Ged\u00e4chtnis rekonstruieren.\n[Dr\u00fccken Sie die Eingabetaste, um die \u00dcbungsdurchg\u00e4nge zu starten.]&quot;;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="if language == &quot;english&quot;: &amp;#10;    instruction_part8.text = (&amp;#10;    &quot;During practice, the complete sequence will be shown at the bottom of the screen, &quot;&amp;#10;    &quot;and you can use it to answer the questions.\n&quot;&amp;#10;    &quot;This is only an aid for the practice trials. In the main task the sequence will no longer be shown, &quot;&amp;#10;    &quot;and you will have to reconstruct it from memory to answer.\n&quot;&amp;#10;    &quot;[Press the return key to start the practice trials.]&quot;&amp;#10;    )&amp;#10;if language == &quot;french&quot;:&amp;#10;    instruction_part8.text = (&amp;#10;    &quot;Pendant l'entraînement, la séquence complète sera affichée en bas de l'écran &quot;&amp;#10;    &quot;et vous pourrez l'utiliser pour répondre aux questions.\n&quot;&amp;#10;    &quot;Il s'agit uniquement d'une aide pour les essais d'entraînement. Dans la tâche principale, la séquence ne sera plus affichée &quot;&amp;#10;    &quot;et vous devrez la reconstruire de mémoire pour répondre.\n&quot;&amp;#10;    &quot;[Appuyez sur la touche Entrée pour commencer les essais d'entraînement.]&quot;&amp;#10;    )&amp;#10;if language == &quot;german&quot;: &amp;#10;    instruction_part8.text = (&amp;#10;    &quot;Während der Übung wird die vollständige Sequenz unten auf dem Bildschirm angezeigt, &quot;&amp;#10;    &quot;und Sie können sie zur Beantwortung der Fragen verwenden.\n&quot;&amp;#10;    &quot;Dies ist nur eine Hilfe für die Übungsdurchgänge. In der Hauptaufgabe wird die Sequenz nicht mehr angezeigt, &quot;&amp;#10;    &quot;und Sie müssen sie zur Beantwortung aus dem Gedächtnis rekonstruieren.\n&quot;&amp;#10;    &quot;[Drücken Sie die Eingabetaste, um die Übungsdurchgänge zu starten.]&quot;&amp;#10;    )" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="instruction_part8_text" valType="code" updates="None" name="name"/>
+      </CodeComponent>
+      <KeyboardComponent name="continue_button_10" plugin="None">
+        <Param val="&quot;return&quot;" valType="list" updates="constant" name="allowedKeys"/>
+        <Param val="" valType="str" updates="constant" name="correctAns"/>
+        <Param val="" valType="str" updates="None" name="deviceLabel"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="True" valType="bool" updates="constant" name="discard previous"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="True" valType="bool" updates="constant" name="forceEndRoutine"/>
+        <Param val="continue_button_10" valType="code" updates="None" name="name"/>
+        <Param val="release" valType="str" updates="constant" name="registerOn"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="last key" valType="str" updates="constant" name="store"/>
+        <Param val="False" valType="bool" updates="constant" name="storeCorrect"/>
+        <Param val="True" valType="bool" updates="constant" name="syncScreenRefresh"/>
+      </KeyboardComponent>
     </Routine>
   </Routines>
   <Flow>
@@ -2481,6 +2580,7 @@
     <Routine name="too_slow_Routine_learn"/>
     <LoopTerminator name="practice_loop_learning"/>
     <Routine name="instruction_06"/>
+    <Routine name="instruction_07"/>
     <LoopInitiator loopType="TrialHandler" name="practice_loop_retrieval">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
       <Param name="conditions" updates="None" val="[{'trial_type': 2, 'img_first': 'stimuli/practice_images/ant.jpg', 'img_second': 'stimuli/practice_images/bed.jpg', 'img_third': 'stimuli/practice_images/belt.jpg', 'opt_left': 'stimuli/practice_images/bed.jpg', 'opt_right': 'stimuli/practice_images/belt.jpg', 'correct_side': 'left', 'correct_key': 'left', 'distance_correct': 1, 'image_dur_retr': 1.5, 'fix_dur_retr': 0.2}, {'trial_type': 3, 'img_first': 'stimuli/practice_images/cow.jpg', 'img_second': 'stimuli/practice_images/basket.jpg', 'img_third': None, 'opt_left': None, 'opt_right': None, 'correct_side': None, 'correct_key': 'left', 'distance_correct': 1, 'image_dur_retr': 2, 'fix_dur_retr': 0.5}, {'trial_type': 1, 'img_first': 'stimuli/practice_images/bed.jpg', 'img_second': 'stimuli/practice_images/cow.jpg', 'img_third': None, 'opt_left': 'yes', 'opt_right': 'no', 'correct_side': 'right', 'correct_key': 'right', 'distance_correct': 2, 'image_dur_retr': 1.2, 'fix_dur_retr': 0.2}, {'trial_type': 3, 'img_first': 'stimuli/practice_images/cow.jpg', 'img_second': 'stimuli/practice_images/belt.jpg', 'img_third': None, 'opt_left': None, 'opt_right': None, 'correct_side': None, 'correct_key': 'right', 'distance_correct': 3, 'image_dur_retr': 2, 'fix_dur_retr': 0.5}, {'trial_type': 2, 'img_first': 'stimuli/practice_images/basket.jpg', 'img_second': 'stimuli/practice_images/bird.jpg', 'img_third': 'stimuli/practice_images/bed.jpg', 'opt_left': 'stimuli/practice_images/bird.jpg', 'opt_right': 'stimuli/practice_images/bed.jpg', 'correct_side': 'right', 'correct_key': 'right', 'distance_correct': 0, 'image_dur_retr': 1.5, 'fix_dur_retr': 0.2}, {'trial_type': 1, 'img_first': 'stimuli/practice_images/belt.jpg', 'img_second': 'stimuli/practice_images/bird.jpg', 'img_third': None, 'opt_left': 'yes', 'opt_right': 'no', 'correct_side': 'left', 'correct_key': 'left', 'distance_correct': 0, 'image_dur_retr': 1.2, 'fix_dur_retr': 0.2}, {'trial_type': 1, 'img_first': 'stimuli/practice_images/anchor.jpg', 'img_second': 'stimuli/practice_images/ant.jpg', 'img_third': None, 'opt_left': 'yes', 'opt_right': 'no', 'correct_side': 'left', 'correct_key': 'left', 'distance_correct': 1, 'image_dur_retr': 1.2, 'fix_dur_retr': 0.2}, {'trial_type': 2, 'img_first': 'stimuli/practice_images/cow.jpg', 'img_second': 'stimuli/practice_images/bed.jpg', 'img_third': 'stimuli/practice_images/belt.jpg', 'opt_left': 'stimuli/practice_images/bed.jpg', 'opt_right': 'stimuli/practice_images/belt.jpg', 'correct_side': 'left', 'correct_key': 'left', 'distance_correct': 2, 'image_dur_retr': 1.5, 'fix_dur_retr': 0.2}, {'trial_type': 3, 'img_first': 'stimuli/practice_images/ant.jpg', 'img_second': 'stimuli/practice_images/belt.jpg', 'img_third': None, 'opt_left': None, 'opt_right': None, 'correct_side': None, 'correct_key': 'up', 'distance_correct': 2, 'image_dur_retr': 2, 'fix_dur_retr': 0.5}]" valType="str"/>
